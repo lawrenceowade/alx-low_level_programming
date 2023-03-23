@@ -1,15 +1,22 @@
-#include "main.h"
-
+#include <stdio.h>
 /**
- *  * print_alphabet - print all alphabet in lowercase
+ * main -Entry point
+ * Description: prints _putchar, followed by a new line
+ * Return: always return o
 */
 
-void print_alphabet(void)
+int main(void)
 {
-char letter;
+	putchar('_');
+	 putchar('p');
+	putchar('u');
+	putchar('t');
+	putchar('c');
+	putchar('h');
+	putchar('a');
+	putchar('r');
+	putchar('\n');
 
-for (letter = 'a'; letter <= 'z'; letter++)
-_putchar(letter);
-
-_putchar('\n');
+	return (0);
 }
+
