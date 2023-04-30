@@ -15,6 +15,6 @@ if (h == NULL)
 return (0);
 }
 
-return (1)  + listint_len(h->next);
+return (1 + listint_len(h->next));
 }
 
