@@ -1,71 +1,57 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * print_listint_safe - Prints a listint_t linked list, even if it has a loop.
- * @head: A pointer to the head of the linked list.
- *
- * Return: The number of nodes in the list.
+ * print_listint_safe - prints a listint_t linked list
+ * @head: pointer to the *head of the linked list
+ * Return: numb of nodes in the list
  */
+
 size_t print_listint_safe(const listint_t *head)
 {
-const listint_t *tortoise, *hare;
+const listint_t *slow, *fast;
 size_t count = 0;
 
-if (!head)
+if (head == NULL)
 exit(98);
 
-hare = head;
-tortoise = head;
+slow = head;
+fast = head;
 
-while (hare && hare->next)
+while (fast != NULL && fast->next != NULL)
 {
+printf("[%p] %d\n", (void *)slow, slow->n);
 count++;
-printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-tortoise = tortoise->next;
-hare = hare->next->next;
 
-if (hare == tortoise)
+slow = slow->next;
+fast = fast->next->next;
+
+if (slow == fast)
 {
+slow = head;
+while (slow != fast)
+{
+printf("[%p] %d\n", (void *)slow, slow->n);
 count++;
-printf("[%p] %d\n", (void *)tortoise, tortoise->n);
+slow = slow->next;
+fast = fast->next;
+}
+
+printf("[%p] %d\n", (void *)slow, slow->n);
+count++;
 break;
 }
 }
 
-if (!hare || !hare->next)
+while (slow != NULL)
 {
+printf("[%p] %d\n", (void *)slow, slow->n);
 count++;
-printf("[%p] %d\n", (void *)tortoise, tortoise->n);
+slow = slow->next;
 }
-
-hare = head;
-while (tortoise != hare)
-{
-count++;
-printf("[%p] %d\n", (void *)hare, hare->n);
-printf("ADVANCE 1\n");
-hare = hare->next;
-
-if (hare == tortoise)
-{
-count++;
-printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-break;
-}
-
-count++;
-printf("[%p] %d\n", (void *)hare, hare->n);
-printf("ADVANCE 1\n");
-hare = hare->next;
-
-count++;
-printf("[%p] %d\n", (void *)tortoise, tortoise->n);
-printf("ADVANCE 1\n");
-tortoise = tortoise->next;
-}
-
 return (count);
 }
+
+
 
