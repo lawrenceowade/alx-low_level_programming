@@ -27,7 +27,7 @@ printf("Multiplication of %d and %d is: %d\n", n1, n2, result);
 }
 else
 {
-printf("Please provide two numbers as command-line arguments.\n");
+printf("Error.\n");
 return (1);
 }
 
